@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Tracable</string>
+    <string name="title_activity_after_connexion">ActivityAfterConnexion</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+
+    <!-- Page de connexion -->
+
+
+    <!-- Home -->
+    <string name="consult">"Consultation \n Secteurs"</string>
+    <string name="station">Stations</string>
+    <string name="encheres">Enchères</string>
+    <string name="statut">Libre/Occupé</string>
+    <string name="activity">Arrêt d\'activité</string>
+
+    <!-- Bottom / Position -->
+    <string name="position_bottom">"Position \n N° - Secteur"</string>
+
+</resources>

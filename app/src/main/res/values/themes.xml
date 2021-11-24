@@ -1,0 +1,58 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Tracable" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Font Style. -->
+        <item name="android:fontFamily">serif</item>
+        <item name="android:textSize">@dimen/size_text</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <!-- Button Connexion -->
+    <style name="ConnexionBtn" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:background">@color/white</item>
+    </style>
+    <!-- Button Application -->
+    <style name="AppBtn" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:background">@drawable/bouton_arrondi</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">bottom|center</item>
+        <item name="android:paddingBottom">20sp</item>
+    </style>
+    <!-- Button Application Disable-->
+    <style name="AppBtnDisable" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:background">@color/buttonDisable_color</item>
+        <item name="android:clickable">false</item>
+    </style>
+    <!-- Button Designe Disable-->
+    <style name="AppBtnDesign" parent="@android:style/Widget.Button">
+        <item name="android:clickable">false</item>
+        <item name="android:background">@drawable/bouton_design_arrondi</item>
+    </style>
+    <!-- Button position-->
+    <style name="AppBtnPos" parent="@android:style/Widget.Button">
+        <item name="android:textColor">@color/textPopup_color</item>
+        <item name="android:background">@drawable/boutonpos_arrondi</item>
+    </style>
+
+    <style name="Theme.Tracable.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Tracable.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Tracable.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
