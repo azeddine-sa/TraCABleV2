@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main_color"
+    android:padding="16dp">
+
+
+    <Button
+        android:id="@+id/btn_consult"
+        style="@style/AppBtn"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/consult" />
+
+    <Button
+        android:id="@+id/btn_design_top"
+        style="@style/AppBtnDesign"
+        android:layout_width="180dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp" />
+
+    <Button
+        android:id="@+id/btn_libocc"
+        style="@style/AppBtn"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="255dp"
+        android:layout_marginEnd="0dp"
+        android:text="@string/statut" />
+
+    <Button
+        android:id="@+id/btn_encheres"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="170dp"
+        android:text="@string/encheres"
+        style="@style/AppBtn"/>
+
+    <Button
+        android:id="@+id/btn_activity"
+        style="@style/AppBtn"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="340dp"
+        android:text="@string/activity" />
+
+    <Button
+        android:id="@+id/btn_station"
+        android:layout_width="180dp"
+        android:layout_height="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="85dp"
+        android:text="@string/station"
+        style="@style/AppBtn"/>
+
+    <Button
+        android:id="@+id/btn_design_bottom"
+        android:layout_width="180dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="425dp"
+        android:background="@drawable/bouton_design_arrondi"/>
+
+
+</RelativeLayout>
