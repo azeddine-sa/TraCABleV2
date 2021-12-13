@@ -28,43 +28,48 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/logotracable" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/txtDriverNum"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:padding="15dp"
-                android:ems="10"
-                android:inputType="numberSigned"
-                android:background="@color/white"
-                android:hint="Numéro de Chauffeur"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="N° de Chauffeur"
+            android:textAlignment="center"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/txtDriverNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:ems="10"
+            android:inputType="numberSigned"
+            android:background="@color/white"
+            android:hint="Numéro de Chauffeur"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/txtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:padding="15dp"
-                android:ems="10"
-                android:inputType="numberSigned"
-                android:background="@color/white"
-                android:hint="Mot de Passe"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mot de passe"
+            android:textAlignment="center"
+            android:textColor="@color/white"/>
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="Mot de Passe"
+            android:inputType="numberPassword"
+            android:padding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btnConnexion"
@@ -74,7 +79,9 @@
             android:layout_margin="50dp"
             android:text="Se connecter"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bouton_arrondi_blanc"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 

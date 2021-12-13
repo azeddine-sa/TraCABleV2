@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    tools:context=".fragment.CourseFragment">
+
+    <LinearLayout
+        android:id="@+id/course_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/buttonPosition_color"
+            android:padding="10dp"
+            android:text="Adresse de prise en charge"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_course_departure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/bar_color"
+            android:padding="5dp"
+            android:text="Adresse de\nprise en charge"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/buttonPosition_color"
+            android:padding="10dp"
+            android:text="Coordonnées client"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_course_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@color/bar_color"
+            android:padding="5dp"
+            android:text="nom\nduclient\nphon"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/buttonPosition_color"
+            android:padding="10dp"
+            android:text="Adresse de destination"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_course_arrival"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/bar_color"
+            android:padding="5dp"
+            android:text="Adresse\nde destination"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/buttonPosition_color"
+            android:padding="10dp"
+            android:text="Informations complémentaire"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_course_infos"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/bar_color"
+            android:padding="5dp"
+            android:text="informations"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

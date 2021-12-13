@@ -42,14 +42,12 @@ public class FirstFragment extends Fragment {
     private View.OnClickListener btn_consult_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
         }
     };
 
     private View.OnClickListener btn_station_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
         }
     };
 
@@ -88,7 +86,9 @@ public class FirstFragment extends Fragment {
     private View.OnClickListener btn_enchere_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container,new EnchereFragment())
+                    .commit();
         }
     };
 
