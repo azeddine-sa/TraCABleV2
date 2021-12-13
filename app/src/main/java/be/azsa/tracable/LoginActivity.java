@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtPassword;
     private Button btnConnexion;
 
-    private int driverNum;
+    private String driverNum;
     private String driverPassword;
 
     Driver driver;
@@ -57,63 +57,57 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onClick(View v){
             //Donnée de connexion introduite par l'utilisateur
-            driverNum = Integer.parseInt(txtDriverNum.getText().toString());
+            driverNum = txtDriverNum.getText().toString();
             driverPassword = txtPassword.getText().toString();
 
+            Log.i("DEBBUG", driverNum+" "+driverPassword);
+
             //Volley connexion API
-            String getUrl = "http://192.168.141.234:8080/api/driver/byDriverNum/"+driverNum;
+            String getUrl = getString(R.string.localhost)+"/driver/byDriverNum/"+driverNum;
+            Log.i("DEBBUG", getUrl);
 
             StringRequest stringRequest = new StringRequest(Request.Method.GET, getUrl,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Log.e("driver",response);
+                            Log.i("driver",response);
                             try{
                                 JSONObject jsonObject = new JSONObject(response);
                                 String idDriver = jsonObject.getString("idDriver");
                                 String firstname = jsonObject.getString("firstname");
                                 String lastname= jsonObject.getString("lastname");
-                                String driverNum = jsonObject.getString("driverNum");
                                 String email = jsonObject.getString("email");
                                 String password = jsonObject.getString("password");
                                 String phone = jsonObject.getString("phone");
 
-                                driver.setIdDriver(Long.parseLong(idDriver));
-                                driver.setPhone(phone);
-                                driver.setDriverNum(Integer.parseInt(driverNum));
-                                driver.setPassword(Integer.parseInt(password));
-                                driver.setEmail(email);
-                                driver.setLastname(lastname);
-                                driver.setFirstname(firstname);
+                                Log.i("DEBBUG", driverPassword+" "+password);
 
-                                if(driverPassword.equals(driver.getPassword())){
-                                    Toast.makeText(LoginActivity.this,
-                                            "Bienvenue "+driver.getLastname().toUpperCase(),
+                                if(driverPassword.equals(password)){
+                                    Toast.makeText(getApplicationContext(), "Connexion réussie !",
                                             Toast.LENGTH_SHORT).show();
                                     //redirection vers la page de connexion
-                                    Intent main = new Intent(getApplicationContext(), LoginActivity.class);
-                                    main.putExtra("idUser", idDriver);
+                                    Intent main = new Intent(getApplicationContext(), MainActivity.class);
+                                    main.putExtra("idDriver", idDriver);
                                     main.putExtra("firstname", firstname);
                                     main.putExtra("lastname", lastname);
                                     main.putExtra("email", email);
                                     main.putExtra("phone", phone);
-                                    main.putExtra("password", password);
+                                    main.putExtra("driverNum", driverNum);
                                     startActivity(main);
-                                } else{
-                                    Toast.makeText(LoginActivity.this,
-                                            "Mot de Passe Incorrect",
+                                }else {
+                                    Toast.makeText(getApplicationContext(), "Mot de passe incorrect",
                                             Toast.LENGTH_SHORT).show();
                                 }
 
                             } catch (Exception e) {
                                 e.printStackTrace();
+                                Log.i("DEBBUG", "l'erreur est ici !!!");
                             }
                         }
                     }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Toast.makeText(getApplicationContext(),"Numero de chauffeur inconnu",Toast.LENGTH_LONG).show();
-
                 }
             });
 

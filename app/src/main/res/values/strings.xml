@@ -4,6 +4,9 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
 
+    <!-- IP Localhost -->
+    <string name="localhost">http://192.168.0.241:8080/api</string>
+
     <!-- Page de connexion -->
 
 

@@ -9,7 +9,7 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import be.azsa.tracable.fragment.FirstFragement;
+import be.azsa.tracable.fragment.FirstFragment;
 import be.azsa.tracable.fragment.SecondFragment;
 import be.azsa.tracable.fragment.ThirdFragment;
 
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView topnav = findViewById(R.id.top_navigation);
         topnav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FirstFragement()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FirstFragment()).commit();
 
     }
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()){
                 case R.id.nav_home:
-                    selectedFragment = new FirstFragement();
+                    selectedFragment = new FirstFragment();
                     break;
                 case R.id.nav_conf:
                     selectedFragment = new SecondFragment();
