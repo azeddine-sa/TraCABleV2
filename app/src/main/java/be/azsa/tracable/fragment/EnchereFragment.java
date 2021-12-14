@@ -43,6 +43,8 @@ public class EnchereFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_enchere, container, false);
 
         enchere_list = (TextView) view.findViewById(R.id.tv_enchere_list);
+
+        //recupération layout Enchere
         LinearLayout ll = (LinearLayout) view.findViewById(R.id.enchere_layout);
 
         //recupération de la l'historique de l'utilisateur sur la BD
@@ -61,57 +63,62 @@ public class EnchereFragment extends Fragment {
                                 String arrival = jsonObject.getString("arrival");
                                 String datetime = jsonObject.getString("datetime");
                                 String infos = jsonObject.getString("infos");
+                                String status = jsonObject.getString("status");
                                 String user_id = jsonObject.getString("user");
 
-                                Button btn = new Button(getContext());
-                                btn.setText(departure);
-                                btn.setPadding(16,16,16,16);
-                                btn.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-                                btn.setBackgroundColor(Color.rgb(33,66,101));
-                                btn.setTextColor(Color.WHITE);
-                                btn.layout(0,0,0,10);
-                                btn.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        //Pop up confirmation
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                                        builder.setTitle("Enchères");
-                                        builder.setMessage("Etes-vous sûr de vouloir prendre la course ?");
+                                if (status.equals("SENT")){
+                                    //Création d'un bouton
+                                    Button btn = new Button(getContext());
 
-                                        //confirmation, renvoie fragment course
-                                        builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                CourseFragment courseFragment = new CourseFragment();
+                                    btn.setText(departure);
+                                    btn.setPadding(16,16,16,16);
+                                    btn.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+                                    btn.setBackgroundColor(Color.rgb(33,66,101));
+                                    btn.setTextColor(Color.WHITE);
+                                    btn.layout(0,0,0,10);
+                                    btn.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            //Pop up confirmation
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                            builder.setTitle("Enchères");
+                                            builder.setMessage("Etes-vous sûr de vouloir prendre la course ?");
 
-                                                Bundle bundle = new Bundle();
-                                                bundle.putString("departure", departure);
-                                                bundle.putString("arrival", arrival);
-                                                bundle.putString("datetime", datetime);
-                                                bundle.putString("infos", infos);
-                                                bundle.putString("user", user_id);
+                                            //confirmation, renvoie fragment course
+                                            builder.setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    CourseFragment courseFragment = new CourseFragment();
 
-                                                courseFragment.setArguments(bundle);
+                                                    Bundle bundle = new Bundle();
+                                                    bundle.putString("departure", departure);
+                                                    bundle.putString("arrival", arrival);
+                                                    bundle.putString("datetime", datetime);
+                                                    bundle.putString("infos", infos);
+                                                    bundle.putString("user", user_id);
 
-                                                getActivity().getSupportFragmentManager().beginTransaction()
-                                                        .replace(R.id.fragment_container,courseFragment)
-                                                        .commit();
-                                            }
-                                        });
+                                                    courseFragment.setArguments(bundle);
 
-                                        builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        });
+                                                    getActivity().getSupportFragmentManager().beginTransaction()
+                                                            .replace(R.id.fragment_container,courseFragment)
+                                                            .commit();
+                                                }
+                                            });
 
-                                        AlertDialog alert = builder.create();
-                                        alert.show();
-                                    }
-                                });
+                                            builder.setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.dismiss();
+                                                }
+                                            });
 
-                                ll.addView(btn);
+                                            AlertDialog alert = builder.create();
+                                            alert.show();
+                                        }
+                                    });
+
+                                    ll.addView(btn);
+                                }
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
