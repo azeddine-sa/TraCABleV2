@@ -25,11 +25,15 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import be.azsa.tracable.R;
 
@@ -59,6 +63,7 @@ public class EnchereFragment extends Fragment {
                         try {
                             for(int i=0; i<jsonArray.length(); i++){
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                String id_order = jsonObject.getString("idOrder");
                                 String departure = jsonObject.getString("departure");
                                 String arrival = jsonObject.getString("arrival");
                                 String datetime = jsonObject.getString("datetime");
@@ -66,7 +71,17 @@ public class EnchereFragment extends Fragment {
                                 String status = jsonObject.getString("status");
                                 String user_id = jsonObject.getString("user");
 
-                                if (status.equals("SENT")){
+                                //parse String datetime on Datetime
+                                String[] datetime_parts = new String[2];
+                                datetime_parts[0] = datetime.substring(0,10);
+                                datetime_parts[1] = datetime.substring(11,19);
+                                String dtp = datetime_parts[0]+" "+datetime_parts[1];
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                                LocalDateTime dt = LocalDateTime.parse(dtp, formatter);
+
+                                //Si la status de la course est SENT
+                                //& la date&heure de la course est < à l'heure actuelle + 15min
+                                if (status.equals("SENT") && dt.isBefore(LocalDateTime.now().plusMinutes(15))){
                                     //Création d'un bouton
                                     Button btn = new Button(getContext());
 
@@ -91,6 +106,7 @@ public class EnchereFragment extends Fragment {
                                                     CourseFragment courseFragment = new CourseFragment();
 
                                                     Bundle bundle = new Bundle();
+                                                    bundle.putString("idOrder", id_order);
                                                     bundle.putString("departure", departure);
                                                     bundle.putString("arrival", arrival);
                                                     bundle.putString("datetime", datetime);
@@ -98,6 +114,37 @@ public class EnchereFragment extends Fragment {
                                                     bundle.putString("user", user_id);
 
                                                     courseFragment.setArguments(bundle);
+
+                                                    //update status de la course SENT->IN_PROGRESS
+                                                    //POST REST API
+                                                    String putUrl = getString(R.string.localhost)+"/order/"+id_order+"/edit";
+                                                    JSONObject putData = new JSONObject();
+                                                    try {
+                                                        putData.put("idOrder", id_order);
+                                                        putData.put("departure", departure);
+                                                        putData.put("arrival", arrival);
+                                                        putData.put("datetime", datetime);
+                                                        putData.put("infos", infos);
+                                                        putData.put("status", "IN_PROGRESS");
+                                                        putData.put("user_id", user_id);
+                                                    } catch (JSONException e) {
+                                                        e.printStackTrace();
+                                                    }
+
+                                                    //modification du status de la course sent en in_progress
+                                                    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, putUrl, putData, new Response.Listener<JSONObject>() {
+                                                        @Override
+                                                        public void onResponse(JSONObject response) {
+                                                            System.out.println(response);
+                                                        }
+                                                    }, new Response.ErrorListener() {
+                                                        @Override
+                                                        public void onErrorResponse(VolleyError error) {
+                                                            error.printStackTrace();
+                                                        }
+                                                    });
+
+                                                    requestQueue.add(jsonObjectRequest);
 
                                                     getActivity().getSupportFragmentManager().beginTransaction()
                                                             .replace(R.id.fragment_container,courseFragment)
