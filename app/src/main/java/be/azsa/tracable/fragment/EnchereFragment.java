@@ -111,6 +111,7 @@ public class EnchereFragment extends Fragment {
                                                     bundle.putString("arrival", arrival);
                                                     bundle.putString("datetime", datetime);
                                                     bundle.putString("infos", infos);
+                                                    bundle.putString("status", status);
                                                     bundle.putString("user", user_id);
 
                                                     courseFragment.setArguments(bundle);

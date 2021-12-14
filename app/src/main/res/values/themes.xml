@@ -47,6 +47,14 @@
         <item name="android:background">@drawable/boutonpos_arrondi</item>
     </style>
 
+    <!-- Button course-->
+    <style name="AppBtnCourse" parent="@android:style/Widget.Button">
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
     <style name="Theme.Tracable.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
