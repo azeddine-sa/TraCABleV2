@@ -3,18 +3,27 @@ package be.azsa.tracable.fragment;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.fragment.app.Fragment;
 
 import be.azsa.tracable.R;
 
 public class FirstFragment extends Fragment {
     Button btn_consult, btn_station, btn_enchere, btn_libocc, btn_activity;
+    Boolean lib;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        lib = true;
+    }
 
     @Nullable
     @Override
@@ -96,6 +105,30 @@ public class FirstFragment extends Fragment {
     private View.OnClickListener btn_libocc_listener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            ActionMenuItemView item = getActivity().findViewById(R.id.menu_libocc);
+            if (lib){
+                item.setIcon(getResources().getDrawable(R.drawable.ic_occ));
+
+                btn_consult.setEnabled(false);
+                btn_consult.setBackgroundColor(getResources().getColor(R.color.buttonDisable_color));
+                btn_enchere.setEnabled(false);
+                btn_enchere.setBackgroundColor(getResources().getColor(R.color.buttonDisable_color));
+                btn_station.setEnabled(false);
+                btn_station.setBackgroundColor(getResources().getColor(R.color.buttonDisable_color));
+
+                lib=false;
+            }else{
+                item.setIcon(getResources().getDrawable(R.drawable.ic_lib));
+
+                btn_consult.setEnabled(true);
+                btn_consult.setBackgroundColor(getResources().getColor(R.color.button_color));
+                btn_enchere.setEnabled(true);
+                btn_enchere.setBackgroundColor(getResources().getColor(R.color.button_color));
+                btn_station.setEnabled(true);
+                btn_station.setBackgroundColor(getResources().getColor(R.color.button_color));
+
+                lib=true;
+            }
 
         }
     };
