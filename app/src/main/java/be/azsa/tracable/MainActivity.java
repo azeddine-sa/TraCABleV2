@@ -23,7 +23,9 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView topnav = findViewById(R.id.top_navigation);
         topnav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new FirstFragment()).commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container,new FirstFragment())
+                .commit();
 
     }
 
@@ -44,8 +46,27 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, selectedFragment)
+                    .addToBackStack(null)
+                    .commit();
             return true;
         }
     };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 0) {
+            //additional code
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
+    }
 }

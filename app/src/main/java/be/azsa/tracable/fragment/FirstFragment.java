@@ -88,6 +88,7 @@ public class FirstFragment extends Fragment {
         public void onClick(View v) {
             getActivity().getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container,new EnchereFragment())
+                    .addToBackStack(null)
                     .commit();
         }
     };
